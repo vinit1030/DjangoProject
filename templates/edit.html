@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit & Update the records</title>
+</head>
+<body>
+<center>
+    <h1>Edit & Update Employee Records</h1>
+    <h1>The Employee Id {{crudEmployee.id}}</h1>
+    <hr/>
+    <form method="POST" action="/update/{{crudEmployee.id}}">
+        {% csrf_token %}
+    <table border="1">
+        <tr>
+            <td>Employee Name</td>
+            <td><input type="text" name="ename" value="{{crudEmployee.ename}}"></td>
+            </tr>
+        <tr>
+            <td>Employee Address</td>
+            <td><input type="text" name="eaddress" value="{{crudEmployee.eaddress}}"></td>
+        </tr>
+            <tr>
+            <td>Employee Age</td>
+            <td><input type="number" name="age" value="{{crudEmployee.age}}"></td>
+        </tr>
+            <tr>
+            <td>Employee Gender</td>
+            <td><input type="text" name="egender" value="{{crudEmployee.egender}}"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Update student record">
+    <a href="{% url 'employeeDisplay' %}"> Display all records </a>
+        <hr/>
+        {% if messages %}
+        {% for result in messages %}
+        {{result}}
+        {% endfor %}
+        {% endif %}
+        </form>
+</center>
+</body>
+</html>

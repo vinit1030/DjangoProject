@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This is Home page</title>
+</head>
+<body>
+    <center>
+        <h2>Django web framework</h2>
+        <hr/>
+        <a href="{% url 'employeeInsert' %}"> Add New Employee Record</a>
+        <table border="1">
+            <tr>
+                <th>Employee Id</th>
+                <th>Employee Name</th>
+                <th>Employee Address</th>
+                <th>Employee Age</th>
+                <th>Employee Gender</th>
+            </tr>
+            {% for employeeDisplay in crudEmployee %}
+            <tr>
+                <td>{{employeeDisplay.id}}</td>
+                <td>{{employeeDisplay.ename}}</td>
+                <td>{{employeeDisplay.eaddress}}</td>
+                <td>{{employeeDisplay.age}}</td>
+                <td>{{employeeDisplay.egender}}</td>
+                <td><a href="/edit/{{employeeDisplay.id}}"> Edit</a></td>
+                <td><a href="/delete/{{employeeDisplay.id}}"> Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>
